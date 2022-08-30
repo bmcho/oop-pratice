@@ -13,14 +13,14 @@ public class Calculator {
             new DivisionOperator()
     );
 
-    public static int calculate(int operand1, String operator, int operand2) {
-        return ArithmeticOperator.calculate(operand1, operator, operand2);
+    public static int calculate(PositiveNumber operand1, String operator, PositiveNumber operand2) {
+        return ArithmeticOperator.calculate(operand1.toInt(), operator, operand2.toInt());
     }
 
-    public static int calculate2(int operand1, String operator, int operand2) {
+    public static int calculate2(PositiveNumber operand1, String operator, PositiveNumber operand2) {
         return arithmeticOperators.stream()
                 .filter(v -> v.support(operator))
-                .map(m -> m.calculate(operand1, operand2))
+                .map(m -> m.calculate(operand1.toInt(), operand2.toInt()))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("올바른 사칙연산이 아닙니다"));
     }
