@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 /**
@@ -71,5 +72,21 @@ public class CalculatorTest {
                 arguments(4, "*", 2, 8),
                 arguments(4, "/", 2, 2)
         );
+    }
+
+    @DisplayName("나눗셈에서 0으로 나누는 경우 IllegalArgumentException 발생 - interfaceImple")
+    @Test
+    void givenSecondOperandZero_whenCalculate1_thenThrowIllegalArgumentException() {
+        assertThatCode(() -> Calculator.calculate(10, "/", 0))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @DisplayName("나눗셈에서 0으로 나누는 경우 IllegalArgumentException 발생 - interfaceImple")
+    @Test
+    void givenSecondOperandZero_whenCalculate2_thenThrowIllegalArgumentException() {
+        assertThatCode(() -> Calculator.calculate2(10, "/", 0))
+                .isInstanceOf(IllegalArgumentException.class);
+
     }
 }
