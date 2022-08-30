@@ -1,4 +1,4 @@
-package org.example.Calculator;
+package org.example.calculator;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,16 +37,34 @@ public class CalculatorTest {
         assertThat(result).isEqualTo(-1);
     }
 
-    @DisplayName("사칙 연산 테스트 수행")
+    @DisplayName("사칙 연산 테스트 수행 - enum")
     @ParameterizedTest(name="[{index}] {0} {1} {2} = {3}")
     @MethodSource
-    void givenTwoOperandAndOperator_whenCalculateMethod_thenReturnResult(int operand1, String operator, int operand2, int expected) {
+    void givenTwoOperandAndOperator_whenCalculateMethodByEnum_thenReturnResult(int operand1, String operator, int operand2, int expected) {
         int result = Calculator.calculate(operand1, operator, operand2);
 
         assertThat(result).isEqualTo(expected);
     }
 
-    static Stream<Arguments> givenTwoOperandAndOperator_whenCalculateMethod_thenReturnResult() {
+    static Stream<Arguments> givenTwoOperandAndOperator_whenCalculateMethodByEnum_thenReturnResult() {
+        return Stream.of(
+                arguments(1, "+", 2, 3),
+                arguments(1, "-", 2, -1),
+                arguments(4, "*", 2, 8),
+                arguments(4, "/", 2, 2)
+        );
+    }
+
+    @DisplayName("사칙 연산 테스트 수행 - interfaceImpl")
+    @ParameterizedTest(name="[{index}] {0} {1} {2} = {3}")
+    @MethodSource
+    void givenTwoOperandAndOperator_whenCalculateMethodByInterfaceImpl_thenReturnResult(int operand1, String operator, int operand2, int expected) {
+        int result = Calculator.calculate2(operand1, operator, operand2);
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> givenTwoOperandAndOperator_whenCalculateMethodByInterfaceImpl_thenReturnResult() {
         return Stream.of(
                 arguments(1, "+", 2, 3),
                 arguments(1, "-", 2, -1),

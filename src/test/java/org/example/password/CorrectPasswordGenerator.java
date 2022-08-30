@@ -1,6 +1,4 @@
-package org.example.Password;
-
-import org.example.Password.PasswordGenerateInterface;
+package org.example.password;
 
 public class CorrectPasswordGenerator implements PasswordGenerateInterface {
     @Override
