@@ -19,7 +19,7 @@ public class Course {
         return credit;
     }
 
-    public double getGradeToNumber() {
+    private double getGradeToNumber() {
         GradeCode grade = GradeCode.findBy(this.grade);
         return grade.getScore();
     }
