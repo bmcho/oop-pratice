@@ -14,7 +14,7 @@ public class GradeCalculator {
         //(학점수×교과목 평점)의 합계
         double multipliedCreditAndCoursesGrade = 0;
         for (Course course : courses) {
-            multipliedCreditAndCoursesGrade += course.getCredit() * course.getGradeToNumber();
+            multipliedCreditAndCoursesGrade += course.multiplyCreditAdnCourseGrade();
         }
 
         int totalCompletedCredit = courses.stream()
